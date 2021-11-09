@@ -127,7 +127,9 @@ foreach($folder in $folderPaths)
     Copy-Item $folder $filesFolder -Recurse
 }
 
-#endregion Network tests
+#region 
+
+#region Network tests
 
 $networkFolder = New-item -Path $diagnosticsFolder.FullName -ItemType Directory -Name "Network" -Force
 
@@ -180,7 +182,7 @@ foreach($myhost in $hosts)
 $results | Sort-Object tcptestsucceeded | Format-Table | Out-File -FilePath $("{0}\01-NetworkSummary.txt" -f $networkFolder.FullName)
 
 
-#region 
+#endregion 
 
 #region Create zip
 
