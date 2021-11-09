@@ -42,12 +42,13 @@ foreach($key in $registryKeys)
 #region CMD output 
 
 $cmdFolder = New-item -Path $diagnosticsFolder.FullName -ItemType Directory -Name "CMD Output"
+$mdmDiagnosticsToolFolder = New-Item -Path $cmdFolder.FullName -ItemType Directory -Name "mdmDiagnosticsTool"
 $commands = @{    
     "certutilMachine.txt" = { cd "$env:windir\system32"; .\certutil.exe -store };
     "certutilUser.txt" = { cd "$env:windir\system32"; .\certutil.exe -store -user my };
     "dsregcmd.txt" = { cd "$env:windir\system32"; .\Dsregcmd.exe /status };
     "ipconfig.txt" = { cd "$env:windir\system32"; .\ipconfig.exe /all };
-    "mdmdiagnosticstool.txt" = { cd "$env:windir\system32"; .\mdmdiagnosticstool.exe };
+    "mdmdiagnosticstool.txt" = { cd "$env:windir\system32"; .\mdmdiagnosticstool.exe -out $mdmDiagnosticsToolFolder};
     "NONEmsinfo32.txt" = { cd "$env:windir\system32"; .\msinfo32.exe /report $($cmdFolder.FullName + "\msinfo32.log") };
     "netshAdvfirewallAllprofiles.txt" = { cd "$env:windir\system32"; .\netsh.exe advfirewall show allprofiles };
     "netshAdvfirewallGlobal.txt" = { cd "$env:windir\system32"; .\netsh.exe advfirewall show global };
