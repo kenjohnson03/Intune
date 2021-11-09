@@ -152,7 +152,7 @@ $hosts = @(
 )
 
 # DoD O365 hosts
-$js = (Invoke-WebRequest "https://endpoints.office.com/endpoints/USGOVDoD?$requestGUID").Content | ConvertFrom-Json
+$js = (Invoke-WebRequest "https://endpoints.office.com/endpoints/USGOVDoD?ClientRequestId=$requestGUID").Content | ConvertFrom-Json
 foreach($entry in $js)
 {
     foreach($url in $entry.urls)
