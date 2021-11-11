@@ -77,6 +77,60 @@ foreach($cmd in $commands.Keys)
 
 #endregion 
 
+#region Certificate Stores
+
+$machineStores = @(
+    # "AAD Token Issuer",
+    "AuthRoot",
+    "My",
+    # "Request",
+    # "Remote Desktop",
+    # "TestSignRoot",
+    # "SmartCardRoot",
+    "Disallowed",
+    "TrustedPublisher",
+    # "eSIM Certification Authorities",
+    # "FlightRoot",
+    # "WindowsServerUpdateServices",
+    "CA",
+    # "ClientAuthIssuer",
+    # "TrustedAppRoot",
+    # "Windows Live ID Token Issuer",
+    # "Local NonRemovable Certificates",
+    # "TrustedPeople",
+    # "TrustedDevices",
+    # "Homegroup Machine Certificates",
+    # "SMS",
+    # "Trust",
+    "Root"
+    # "OemEsim",
+    # "MSIEHistoryJournal",
+    # "ADDRESSBOOK",
+    # "PasspointTrustedRoots"
+)
+
+$currentUserStores = @(
+    "TrustedPublisher",
+    # "ClientAuthIssuer",
+    "Root",
+    # "UserDS",
+    "CA",
+    # "REQUEST",
+    # "AuthRoot",
+    # "MSIEHistoryJournal",
+    # "TrustedPeople",
+    # "ADDRESSBOOK",
+    # "Local NonRemovable Certificates",
+    "My",
+    # "SmartCardRoot",
+    # "Trust",
+    "Disallowed"
+)
+
+# TODO add logic to output to files.
+
+#endregion
+
 #region Event Viewers
 
 $eventFolder = New-item -Path $diagnosticsFolder.FullName -ItemType Directory -Name "Event Logs"
